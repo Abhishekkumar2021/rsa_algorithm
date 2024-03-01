@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>RSA Algorithm</title>
+  </head>
+  <body class="w-full h-screen overflow-hidden bg-zinc-950">
+    <!-- Introduction and related theory -->
+    <section
+      class="p-6 gap-2 text-white flex justify-center items-center flex-col w-full min-h-screen bg-gradient-to-b from-zinc-800 to-zinc-950 relative"
+      id="introduction"
+    >
+      <h1
+        class="text-xl px-6 py-3  sm:px-8 md:py-5 md:px-10 md:text-3xl text-center bg-green-700 rounded-md"
+      >
+        RSA Algorithm
+      </h1>
+      <p class="w-full p-4 text-base  md:text-xl lg:w-3/4">
+        The RSA algorithm is the most widely used public-key algorithm for
+        secure data transmission. It is also one of the oldest. The acronym RSA
+        comes from the surnames of Ron Rivest, Adi Shamir, and Leonard Adleman,
+        who publicly described the algorithm in 1977. An equivalent system was
+        developed secretly, in 1973, by British mathematician Clifford Cocks.
+        The security of the RSA algorithm is based on the practical difficulty
+        of factoring the product of two large prime numbers, the factoring
+        problem. The RSA algorithm is a block cipher that uses the same key for
+        both encryption and decryption. It is a public-key algorithm, which
+        means that the key used for encryption is different from the key used
+        for decryption. The public key is used for encryption, and the private
+        key is used for decryption. The security of the RSA algorithm is based
+        on the practical difficulty of factoring the product of two large prime
+        numbers, the factoring problem.
+      </p>
+      <a
+        href="#theory"
+        class="px-10 py-2 bg-zinc-100 rounded-md text-zinc-900 text-base md:text-xl hover:bg-zinc-200 font-normal"
+        >Next</a
+      >
+    </section>
+    <section
+      class="p-6 gap-2 text-white flex justify-center items-center flex-col w-full min-h-screen bg-gradient-to-b from-zinc-800 to-zinc-950 relative"
+      id="theory"
+    >
+      <h1
+        class="text-xl px-6 py-3  sm:px-8 md:py-5 md:px-10 md:text-3xl text-center bg-green-700 rounded-md"
+      >
+        Steps to generate RSA keys
+      </h1>
+      <div class="w-full p-4 text-base md:text-xl lg:w-4/5 flex flex-col gap-2">
+      <p class="w-full bg-zinc-800 rounded-md px-2 border-zinc-700 border-2">
+        ✅ Choose two distinct prime numbers p and q.
+      </p>
+      <p class="w-full bg-zinc-800 rounded-md px-2 border-zinc-700 border-2">
+        ✅ Compute n = pq.
+      </p>
+      <p class="w-full bg-zinc-800 rounded-md px-2 border-zinc-700 border-2">
+        ✅ Compute φ(n) = (p-1)(q-1).
+      </p>
+      <p class="w-full bg-zinc-800 rounded-md px-2 border-zinc-700 border-2">
+        ✅ Choose an integer e such that 1 &lt; e &lt; φ(n) and gcd(e, φ(n)) = 1;
+        i.e., e and φ(n) are coprime.
+      </p>
+      <p class="w-full bg-zinc-800 rounded-md px-2 border-zinc-700 border-2">
+        ✅ Compute d to satisfy the congruence relation de ≡ 1 (mod φ(n)); i.e., d
+        is the modular multiplicative inverse of e (modulo φ(n)).
+      </p>
+      <p class="w-full bg-zinc-800 rounded-md px-2 border-zinc-700 border-2">
+        ✅ The public key is (n, e) and the private key is (n, d).
+      </p>
+      <div id="btns" class="flex w-full gap-3 justify-center mt-5">
+        <a href="#introduction" class="px-10 py-2 bg-zinc-100 rounded-md text-zinc-900 text-base md:text-xl hover:bg-zinc-200 font-normal">Prev</a>
+        <a href="#implementation" class="px-10 py-2 bg-zinc-100 rounded-md text-zinc-900 text-base md:text-xl hover:bg-zinc-200 font-normal">Next</a>
+      </div>
+    </div>
+    </section>
+    <section id="implementation" class="p-6 gap-2 text-white flex justify-center items-center flex-col w-full min-h-screen bg-gradient-to-b from-zinc-700 to-zinc-950">
+      <h1
+        class="text-xl px-6 py-3  sm:px-8 md:py-5 md:px-10 md:text-3xl text-center bg-green-700 rounded-md"
+      >
+        Implementation
+      </h1>
+      <div class="w-full p-5 justify-center flex flex-col items-center gap-5">
+        <div class="flex flex-col gap-2 w-full md:w-3/4">
+          <label for="p" class="text-base md:text-xl">Enter prime number p:</label>
+          <input
+            type="number"
+            id="p"
+            class="w-full p-2 rounded-md bg-zinc-800 border-zinc-700 border-2 outline-none"
+          />
+        </div>
+        <div class="flex flex-col gap-2 w-full md:w-3/4">
+          <label for="q" class="text-base md:text-xl">Enter prime number q:</label>
+          <input
+            type="number"
+            id="q"
+            class="w-full p-2 rounded-md bg-zinc-800 border-zinc-700 border-2 outline-none"
+          />
+        </div>
+        <button class="px-10 py-2 bg-zinc-100 rounded-md text-zinc-900 text-base md:text-xl hover:bg-zinc-200 font-normal" id="generate">
+          Generate Keys
+        </button>
+        <div class="flex flex-col gap-2 w-full md:w-3/4">
+          <h4 for="public-key" class="text-base md:text-xl">Public Key:</h4>
+          <p
+            type="text"
+            id="public-key"
+            class="w-full p-2 min-h-12 rounded-md bg-zinc-800 border-zinc-700 border-2 outline-none"
+
+          />
+      </div>
+      <div class="flex flex-col gap-2 w-full md:w-3/4">
+        <h4 for="private-key" class="text-base md:text-xl">Private Key:</h4>
+        <p
+          type="text"
+          id="private-key"
+          class="w-full p-2 min-h-12 rounded-md bg-zinc-800 border-zinc-700 border-2 outline-none"
+        />
+      </div>
+      <div class="flex w-full gap-3 justify-center mt-5">
+        <a href="#theory" class="px-10 py-2 bg-zinc-100 rounded-md text-zinc-900 text-base md:text-xl hover:bg-zinc-200 font-normal">Prev</a>
+        <a href="#encrypt" class="px-10 py-2 bg-zinc-100 rounded-md text-zinc-900 text-base md:text-xl hover:bg-zinc-200 font-normal">Next</a>
+      </div>
+    </section>
+    <section id="encrypt"
+      class="p-6 gap-2 text-white flex justify-center items-center flex-col w-full min-h-screen bg-gradient-to-b from-zinc-800 to-zinc-950 relative"
+    >
+      <h1
+        class="text-xl px-6 py-3  sm:px-8 md:py-5 md:px-10 md:text-3xl text-center bg-green-700 rounded-md"
+      >
+        Encryption
+      </h1>
+      <div class="w-full p-5 justify-center flex flex-col items-center gap-5">
+        <div class="flex flex-col gap-2 w-full md:w-3/4">
+          <label for="message" class="text-base md:text-xl">Enter message to encrypt:</label>
+          <textarea
+            type="text"
+            id="message"
+            class="w-full p-2 rounded-md bg-zinc-800 border-zinc-700 border-2 outline-none min-h-32"></textarea>
+        </div>
+        <button class="px-10 py-2 bg-zinc-100 rounded-md text-zinc-900 text-base md:text-xl hover:bg-zinc-200 font-normal" id="encrypt-btn">
+          Encrypt
+        </button>
+        <div class="flex flex-col gap-2 w-full md:w-3/4">
+          <h4  class="text-base md:text-xl">Encrypted Message:</h4>
+          <p
+            type="text"
+            id="encrypted-message"
+            class="w-full p-2 min-h-24 rounded-md bg-zinc-800 border-zinc-700 border-2 outline-none"
+          />
+        </div>
+        <div class="flex w-full gap-3 justify-center mt-5">
+          <a href="#implementation" class="px-10 py-2 bg-zinc-100 rounded-md text-zinc-900 text-base md:text-xl hover:bg-zinc-200 font-normal">Prev</a>
+          <a href="#decrypt" class="px-10 py-2 bg-zinc-100 rounded-md text-zinc-900 text-base md:text-xl hover:bg-zinc-200 font-normal">Next</a>
+        </div>
+      </div>
+    </section>
+    <section id="decrypt"
+      class="p-6 gap-2 text-white flex justify-center items-center flex-col w-full min-h-screen bg-gradient-to-b from-zinc-700 to-zinc-900 relative"
+    >
+      <h1
+        class="text-xl px-6 py-3  sm:px-8 md:py-5 md:px-10 md:text-3xl text-center bg-green-700 rounded-md"
+      >
+        Decryption
+      </h1>
+      <div class="w-full p-5 justify-center flex flex-col items-center gap-5">
+        <div class="flex flex-col gap-2 w-full md:w-3/4">
+          <label for="encrypted-cipher" class="text-base md:text-xl">Enter message to decrypt:</label>
+          <textarea
+            type="text"
+            id="encrypted-cipher"
+            class="w-full p-2 rounded-md bg-zinc-800 border-zinc-700 border-2 outline-none min-h-32"></textarea>
+        </div>
+        <button class="px-10 py-2 bg-zinc-100 rounded-md text-zinc-900 text-base md:text-xl hover:bg-zinc-200 font-normal" id="decrypt-btn">
+          Decrypt
+        </button>
+        <div class="flex flex-col gap-2 w-full md:w-3/4">
+          <h4  class="text-base md:text-xl">Decrypted Message:</h4>
+          <p
+            type="text"
+            id="decrypted-message"
+            class="w-full p-2 min-h-24 rounded-md bg-zinc-800 border-zinc-700 border-2 outline-none"
+          />
+        </div>
+        <div class="flex w-full gap-3 justify-center mt-5">
+          <a href="#encrypt" class="px-10 py-2 bg-zinc-100 rounded-md text-zinc-900 text-base md:text-xl hover:bg-zinc-200 font-normal">Prev</a>
+          <a href="#introduction" class="px-10 py-2 bg-zinc-100 rounded-md text-zinc-900 text-base md:text-xl hover:bg-zinc-200 font-normal">Start Over</a>
+        </div>
+      </div>
+    </section>
+    <script type="module" src="/src/main.ts"></script>
+  </body>
+</html>
